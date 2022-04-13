@@ -11,7 +11,7 @@
                     <field name="date_from" groups="customer_discount.advance_sales"/>
                     <field name="date_to" groups="customer_discount.advance_sales"/>
                     <field name="product_warranty"/>
-                    
+                    <field name="day_warranty" decoration-danger="1"/>
                 </xpath>
             </field>
         </record>
@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <xpath expr="/tree/field[@name='default_code']" position="after">
                     <field name="product_warranty" string="Warranty"/>
-                    
+                    <field name="day_warranty" string="Number Day Warranty" decoration-danger="1"/>
                 </xpath>
             </field>
         </record>
