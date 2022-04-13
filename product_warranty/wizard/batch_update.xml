@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="wizard_update_date_cutomers_discount" model="ir.ui.view">
+        <field name="name">update.order.sale</field>
+        <field name="model">order.discount.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Batch Update">
+                <group>
+                    <group>
+                        <field name="customer_discount_code"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Confirm" name="multi_update_discount" default_focus="1" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_customer_batch_update" model="ir.actions.act_window">
+        <field name="name">Update Vip</field>
+        <field name="res_model">order.discount.wizard</field>
+        <field name="binding_model_id" ref="model_res_partner"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="wizard_update_date_cutomers_discount"/>
+    </record>
+</odoo>
