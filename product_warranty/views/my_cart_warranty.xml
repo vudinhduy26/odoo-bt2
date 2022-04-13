@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--website_sale : id model , product : id cua template-->
+        <!--detail product-->
+        <template id="show_warranty_code_portal_template" name="My product Inherit"
+                  inherit_id="website_sale.product">
+            <xpath expr='//h1[@t-field="product.name"]' position="after">
+                <h4 itemprop="name" t-field="product.product_warranty"/>
+            </xpath>
+        </template>
+
+        <!--Tree view (list - Grid) -->
+        <template id="show_warranty_template_02" name="Warranty show 02" inherit_id="website_sale.products_item">
+            <xpath expr='/t[1]/form[1]/div[2]/div[1]/h6[1]/a[1][@t-field="product.name"]' position="after">
+                <br/>
+                <br/>
+                <table style="font-size : 15px">
+                    <tr>
+                        <td>Warranty Code :</td>
+                        <td>
+                            <p itemprop="name" t-field="product.product_warranty">warranty</p>
+                        </td>
+                    </tr>
+                </table>
+            </xpath>
+        </template>
+
+        <!--total discount estimated-->
+        <template id="show_total_discount_estimated" inherit_id="website_sale.total">
+            <xpath expr="//tr[@id='order_total_untaxed']" position="before">
+                <tr>
+                    <td class="text-right border-0">Total Discount Estimated :</td>
+                    <td class="text-xl-right border-0">
+                        <span t-field="website_sale_order.order_line.total_discount_estimated"
+                              style="white-space: nowrap;"/>
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>
