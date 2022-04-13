@@ -29,5 +29,35 @@
             </field>
         </record>
 
+        <!--search-->
+        <record id="product_action_view_search_inherit" model="ir.ui.view">
+            <field name="name">product.search.check.show</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="after">
+                    <filter string="Check Warranty" name="check_warranty" domain="[('check_warranty','=','True')]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--action-->
+        <record id="action_product_valid" model="ir.actions.act_window">
+            <field name="name">Product Warranty</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">product.template</field>
+            <field name="domain">[('check_warranty','=',True)]</field>
+            <field name="view_ids" eval="[(5,0,0),
+            (0, 0, {'view_mode':'tree','view_id':ref('view_product_warranty_form_inherit')}),
+            (0, 0, {'view_mode':'form','view_id':ref('form_product_warranty_form_inherit')})]"/>
+        </record>
+
+        <!--menu-->
+        <menuitem id="#menuitem_product_warranty"
+                  name="Warranty"
+                  parent="sale.product_menu_catalog"
+                  sequence="2"
+                  groups="base.group_user"
+                  action="action_product_valid"/>
     </data>
 </odoo>
