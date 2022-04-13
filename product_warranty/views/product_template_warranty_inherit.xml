@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--Form inherit -->
+        <record id="form_product_warranty_form_inherit" model="ir.ui.view">
+            <field name="name">product.warranty.form.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_policy']" position="after">
+                    <field name="date_from" groups="customer_discount.advance_sales"/>
+                    <field name="date_to" groups="customer_discount.advance_sales"/>
+                    <field name="product_warranty"/>
+                    
+                </xpath>
+            </field>
+        </record>
+        <!--View inherit-->
+        <record id="view_product_warranty_form_inherit" model="ir.ui.view">
+            <field name="name">view.tree.product.warranty</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='default_code']" position="after">
+                    <field name="product_warranty" string="Warranty"/>
+                    
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

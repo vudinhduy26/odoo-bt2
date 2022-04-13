@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_warranty_product_warranty,product_warranty.product_warranty,model_product_template,customer_discount.advance_sales,1,1,1,1
+access_sale_warranty_product_warranty,sale_warranty.product_warranty,model_sale_order_line,customer_discount.advance_sales,1,1,1,1
+access_wizard,product_warranty.update_product_warranty,model_product_update_warranty_dz,,1,1,1,1
