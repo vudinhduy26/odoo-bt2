@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="show_warranty_check" model="ir.ui.view">
+            <field name="name">show.warranty.check</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='name']"
+                       position="after">
+                    <field name="show_discount_estimated" string="Discount Estimated" force_save="1"/>
+                    <field name="day_warranty" force_save="1" decoration-danger="1"/>
+                </xpath>
+<!--                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='show_discount_estimated']"-->
+<!--                       position="after">-->
+<!--                    <field name="day_warranty" force_save="1"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>
